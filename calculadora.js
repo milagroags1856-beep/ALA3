@@ -1,38 +1,37 @@
-// Clase con la lógica matemática.
-// Todas las operaciones reciben un arreglo de números (2 o más).
 class Calculadora {
-    sumar(numeros) {
-        let resultado = 0;
-        for (let i = 0; i < numeros.length; i++) {
-            resultado = resultado + numeros[i];
-        }
-        return resultado;
+  sumar(a, b) {
+    return a + b;
+  }
+
+  restar(a, b) {
+    return a - b;
+  }
+
+  multiplicar(a, b) {
+    return a * b;
+  }
+
+  dividir(a, b) {
+    if (b === 0) {
+      throw new Error("No es posible dividir por cero.");
     }
- 
-    restar(numeros) {
-        let resultado = numeros[0]; // Se parte del primer número
-        for (let i = 1; i < numeros.length; i++) {
-            resultado = resultado - numeros[i];
-        }
-        return resultado;
+    return a / b;
+  }
+
+  calcular(num1, operador, num2) {
+    switch (operador.trim()) {
+      case "+":
+        return this.sumar(num1, num2);
+      case "-":
+        return this.restar(num1, num2);
+      case "*":
+        return this.multiplicar(num1, num2);
+      case "/":
+        return this.dividir(num1, num2);
+      default:
+        throw new Error("Operador no válido. Usa +, -, * o /.");
     }
- 
-    multiplicar(numeros) {
-        let resultado = 1;
-        for (let i = 0; i < numeros.length; i++) {
-            resultado = resultado * numeros[i];
-        }
-        return resultado;
-    }
- 
-    dividir(numeros) {
-        let resultado = numeros[0]; // Se parte del primer número
-        for (let i = 1; i < numeros.length; i++) {
-            resultado = resultado / numeros[i];
-        }
-        return resultado;
-    }
+  }
 }
- 
-module.exports = Calculadora; // Permite usar la clase desde otros archivos
- 
+
+module.exports = Calculadora;
